@@ -9,6 +9,10 @@ node_modules/
 # Production
 /build
 /dist
+jo_vue/dist/
+jo_node/public/css/
+jo_node/public/js/
+jo_node/public/img/
 
 # Misc
 .DS_Store
