@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert SVG to PNG</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+        #svgContainer {
+            margin-bottom: 20px;
+            background-color: transparent;
+        }
+        
+        canvas {
+            border: 1px dashed #ccc;
+            margin-bottom: 20px;
+        }
+        
+        .instructions {
+            max-width: 600px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            background-color: #1cbcb8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #18a6a2;
+        }
+    </style>
+</head>
+<body>
+    <h1>S.E.D Logo Creator</h1>
+    
+    <div class="instructions">
+        <p>This tool will help you generate a PNG image with a transparent background from the SVG logo.</p>
+        <p>Click the "Generate PNG" button below to create the image, then right-click on the image and select "Save Image As" to download it.</p>
+    </div>
+    
+    <div id="svgContainer">
+        <!-- SVG content will be inserted here -->
+    </div>
+    
+    <canvas id="canvas" width="600" height="800"></canvas>
+    
+    <div>
+        <button id="generateBtn" class="btn">Generate PNG</button>
+        <a id="downloadLink" class="btn" href="#" download="sed-logo.png" style="display: none;">Download PNG</a>
+    </div>
+    
+    <script>
+        // SVG data as a string (the same content as logo.svg)
+        const svgData = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+            <!-- Background - transparent -->
+            <rect width="600" height="800" fill="transparent" />
+            
+            <!-- ID Card -->
+            <g transform="translate(200, 150)">
+                <!-- Card Body -->
+                <rect x="0" y="30" width="200" height="140" rx="20" ry="20" fill="#1cbcb8" />
+                
+                <!-- Card Top -->
+                <rect x="80" y="0" width="40" height="30" rx="8" ry="8" fill="#1cbcb8" />
+                
+                <!-- Avatar -->
+                <circle cx="60" cy="95" r="40" fill="#004e54" />
+                
+                <!-- ID Details Lines -->
+                <rect x="110" y="75" width="70" height="14" rx="7" ry="7" fill="#004e54" />
+                <rect x="110" y="105" width="70" height="14" rx="7" ry="7" fill="#004e54" />
+            </g>
+            
+            <!-- Text - S.E.D -->
+            <text x="300" y="400" font-family="Arial, sans-serif" font-size="80" font-weight="bold" text-anchor="middle" fill="#ffffff" stroke="#004e54" stroke-width="1">
+                S.E.D
+            </text>
+            
+            <!-- Text - SIMPLE EMPLOYEE DIRECTORY -->
+            <text x="300" y="450" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff" stroke="#004e54" stroke-width="0.5">
+                SIMPLE EMPLOYEE DIRECTORY
+            </text>
+        </svg>`;
+        
+        // Insert SVG into the container
+        document.getElementById('svgContainer').innerHTML = svgData;
+        
+        // Function to convert SVG to PNG with transparency
+        document.getElementById('generateBtn').addEventListener('click', function() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Create an image from the SVG
+            const img = new Image();
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0);
+                
+                // Generate data URL and set download link
+                const dataURL = canvas.toDataURL('image/png');
+                const downloadLink = document.getElementById('downloadLink');
+                downloadLink.href = dataURL;
+                downloadLink.style.display = 'inline-block';
+            };
+            
+            // Create a data URL from the SVG string
+            const svgBlob = new Blob([svgData], {type: 'image/svg+xml'});
+            const url = URL.createObjectURL(svgBlob);
+            img.src = url;
+        });
+    </script>
+</body>
+</html> 
