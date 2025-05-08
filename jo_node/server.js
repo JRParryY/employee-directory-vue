@@ -7,6 +7,7 @@
 const express = require('express');  // Web framework for Node.js
 const mongoose = require('mongoose'); // MongoDB object modeling tool
 const cors = require('cors');         // Middleware to enable CORS
+const path = require('path');
 
 // Import route handlers
 
@@ -38,9 +39,14 @@ app.get("/test", (req, res) => {
 
 // === Database Connection and Server Initialization ===
 // MongoDB connection string that specifies the employee_directory database
-const mongoURI = 'mongodb+srv://jparr4:jparr4@cluster1.lqo9sxo.mongodb.net/employee_directory?retryWrites=true&w=majority&appName=Cluster1';
+const mongoURI = process.env.MONGODB_URI;
 
-
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
+// For SPA routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(mongoURI)
