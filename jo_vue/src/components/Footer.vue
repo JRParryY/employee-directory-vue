@@ -2,7 +2,7 @@
   <footer class="main-footer">
     <div class="footer-container">
       <div class="footer-section company-info">
-        <img src="../assets/logo.svg" alt="S.E.D Logo" class="footer-logo" />
+        <img src="../assets/logo.png" alt="S.E.D Logo" class="footer-logo" />
         <h3>S.E.D</h3>
         <p>Simple Employee Directory</p>
       </div>

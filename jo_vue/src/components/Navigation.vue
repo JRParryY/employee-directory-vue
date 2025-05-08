@@ -3,7 +3,7 @@
     <div class="nav-container">
       <!-- Logo and brand name -->
       <router-link to="/" class="brand">
-        <img src="../assets/logo.svg" alt="S.E.D Logo" class="nav-logo" />
+        <img src="../assets/logo.png" alt="S.E.D Logo" class="nav-logo" />
         <span class="brand-name">S.E.D</span>
       </router-link>
       
