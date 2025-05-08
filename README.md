@@ -71,7 +71,8 @@ The frontend will run on http://localhost:8081.
 - **Database**: MongoDB
 - **Tools**: npm, Nodemon
 
-## Scoring Criteria
+
+# Misc
 
 The application has been designed to meet the following criteria:
 
