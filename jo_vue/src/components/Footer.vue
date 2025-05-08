@@ -2,9 +2,9 @@
   <footer class="main-footer">
     <div class="footer-container">
       <div class="footer-section company-info">
-        <img src="../assets/logo.png" alt="S.E.D Logo" class="footer-logo" />
-        <h3>S.E.D</h3>
-        <p>Simple Employee Directory</p>
+        <img src="../assets/logo.png" alt="Employee Directory Logo" class="footer-logo" />
+        <h3>Employee Directory</h3>
+        <p>Manage your workforce efficiently</p>
       </div>
       
       <div class="footer-section quick-links">
@@ -35,7 +35,7 @@
     </div>
     
     <div class="copyright">
-      <p>&copy; 2023 Simple Employee Directory. All rights reserved.</p>
+      <p>&copy; 2023 Employee Directory. All rights reserved.</p>
     </div>
   </footer>
 </template>

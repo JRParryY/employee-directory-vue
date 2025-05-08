@@ -3,7 +3,7 @@
   <header class="app-header">
     <div class="logo-container">
       <!-- Using src attribute to load the logo image -->
-      <img src="../assets/logo.png" alt="S.E.D Logo" class="logo" />
+      <img src="../assets/logo.png" alt="Employee Directory Logo" class="logo" />
     </div>
   </header>
 </template>

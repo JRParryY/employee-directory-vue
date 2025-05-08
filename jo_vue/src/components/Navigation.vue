@@ -3,8 +3,8 @@
     <div class="nav-container">
       <!-- Logo and brand name -->
       <router-link to="/" class="brand">
-        <img src="../assets/logo.png" alt="S.E.D Logo" class="nav-logo" />
-        <span class="brand-name">S.E.D</span>
+        <img src="../assets/logo.png" alt="Employee Directory Logo" class="nav-logo" />
+        <span class="brand-name">Employee Directory</span>
       </router-link>
       
       <!-- Desktop Navigation Links -->

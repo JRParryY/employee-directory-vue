@@ -1,7 +1,7 @@
 <template>
   <div class="home-container">
     <div class="welcome-section">
-      <img src="../assets/logo.png" alt="S.E.D Logo" class="welcome-logo" />
+      <img src="../assets/logo.png" alt="Employee Directory Logo" class="welcome-logo" />
       <h1>Welcome to Employee Directory</h1>
       <p class="welcome-message">
         Manage your workforce data with our comprehensive employee directory application.
