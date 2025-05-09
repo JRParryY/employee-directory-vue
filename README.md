@@ -84,7 +84,7 @@ node seed-data.js
 
 ## Deployed Application
 
-The application is deployed on Heroku at: https://simple-employee-directory-0788da855974.herokuapp.com/
+The application is deployed on Heroku at: https://simple-employee-directory-8c9bb400b351.herokuapp.com/
 
 ## Misc
 
