@@ -24,7 +24,9 @@ The project is organized into two main folders:
 - `jo_vue/` - Frontend Vue.js application
 - `jo_node/` - Backend Node.js/Express API
 
-## Setup Instructions
+## Quick Setup (No Configuration Needed)
+
+The application is pre-configured and ready to use without any additional setup! MongoDB connection is already set up.
 
 ### Backend Setup (jo_node)
 
@@ -43,7 +45,7 @@ The project is organized into two main folders:
    npm run dev
    ```
 
-The backend will run on http://localhost:5001.
+The backend will run on http://localhost:5202.
 
 ### Frontend Setup (jo_vue)
 
@@ -62,7 +64,16 @@ The backend will run on http://localhost:5001.
    npm run serve
    ```
 
-The frontend will run on http://localhost:8081.
+The frontend will run on http://localhost:8080.
+
+## Seeding the Database
+
+To populate the database with sample employee data:
+
+```bash
+# In the jo_node directory
+node seed-data.js
+```
 
 ## Technologies Used
 
@@ -71,8 +82,11 @@ The frontend will run on http://localhost:8081.
 - **Database**: MongoDB
 - **Tools**: npm, Nodemon
 
+## Deployed Application
 
-# Misc
+The application is deployed on Heroku at: https://simple-employee-directory-0788da855974.herokuapp.com/
+
+## Misc
 
 The application has been designed to meet the following criteria:
 
