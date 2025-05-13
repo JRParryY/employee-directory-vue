@@ -23,6 +23,58 @@ const PORT = process.env.PORT || 5202;
 // MongoDB connection URI
 const mongoURI = 'mongodb+srv://jparr4:jparr4@cluster1.lqo9sxo.mongodb.net/employee_directory?retryWrites=true&w=majority&appName=Cluster1';
 
+/**
+ * Serve a file with the appropriate content type
+ */
+function serveFile(res, filePath) {
+  // Get file extension to determine content type
+  const extname = path.extname(filePath);
+  let contentType = 'text/html';
+  
+  // Set the correct content type based on file extension
+  switch (extname) {
+    case '.js':
+      contentType = 'text/javascript';
+      break;
+    case '.css':
+      contentType = 'text/css';
+      break;
+    case '.json':
+      contentType = 'application/json';
+      break;
+    case '.png':
+      contentType = 'image/png';
+      break;
+    case '.jpg':
+    case '.jpeg':
+      contentType = 'image/jpeg';
+      break;
+    case '.svg':
+      contentType = 'image/svg+xml';
+      break;
+  }
+  
+  // Read and serve the file
+  fs.readFile(filePath, (err, content) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        // File not found
+        res.writeHead(404);
+        res.end('File not found');
+      } else {
+        // Server error
+        res.writeHead(500);
+        res.end(`Server Error: ${err.code}`);
+      }
+      return;
+    }
+    
+    // Success - serve the file
+    res.writeHead(200, { 'Content-Type': contentType });
+    res.end(content);
+  });
+}
+
 // Create HTTP server
 const server = http.createServer(async (req, res) => {
   // Parse the URL from the request
@@ -44,8 +96,15 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // Handling API requests
-  if (pathname.startsWith('/api/employees')) {
+  // Handle API requests
+  if (pathname.startsWith('/api')) {
+    // API info endpoint
+    if (pathname === '/api') {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ message: 'API is running!' }));
+      return;
+    }
+    
     // API endpoint for employees
     if (pathname === '/api/employees') {
       switch (req.method) {
@@ -66,10 +125,10 @@ const server = http.createServer(async (req, res) => {
                 return;
               }
               
-              // Parse the JSON file to get just the employees array
+              // Parse the JSON file
               const employeesData = JSON.parse(data);
               res.writeHead(200, { 'Content-Type': 'application/json' });
-              res.end(JSON.stringify(employeesData.employees));
+              res.end(JSON.stringify(employeesData));
             });
           }
           break;
@@ -120,9 +179,11 @@ const server = http.createServer(async (req, res) => {
           res.writeHead(405, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ message: 'Method Not Allowed' }));
       }
+      return;
     } 
+    
     // Handle DELETE /api/employees/:id
-    else if (pathname.match(/^\/api\/employees\/[^\/]+$/)) {
+    if (pathname.match(/^\/api\/employees\/[^\/]+$/)) {
       if (req.method === 'DELETE') {
         try {
           // Extract the employee ID from the URL
@@ -151,103 +212,57 @@ const server = http.createServer(async (req, res) => {
         res.writeHead(405, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ message: 'Method Not Allowed' }));
       }
-    }
-    // API info endpoint
-    else if (pathname === '/api') {
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ message: 'API is running!' }));
+      return;
     }
   }
+  
   // Serve portfolio website at root
-  else if (pathname === '/' || pathname === '/index.html') {
-    fs.readFile(path.join(__dirname, 'public', 'portfolio.html'), (err, content) => {
-      if (err) {
-        res.writeHead(500);
-        res.end('Error loading portfolio page');
-        return;
-      }
-      
-      res.writeHead(200, { 'Content-Type': 'text/html' });
-      res.end(content);
-    });
+  if (pathname === '/' || pathname === '/index.html') {
+    serveFile(res, path.join(__dirname, 'public', 'portfolio.html'));
+    return;
   }
-  // Handle static files
-  else {
-    // Determine the file path
-    let filePath = path.join(__dirname, 'public', pathname);
-    
-    // Check if the file exists
-    fs.access(filePath, fs.constants.F_OK, (err) => {
-      if (err) {
-        // File not found, check if it's the SPA route
-        if (pathname.startsWith('/employees')) {
-          // Serve the main index.html for SPA routes
-          fs.readFile(path.join(__dirname, 'public', 'index.html'), (err, content) => {
-            if (err) {
-              res.writeHead(500);
-              res.end('Error loading application');
-              return;
-            }
-            
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(content);
-          });
-        } else {
-          // Return 404 for other non-existing files
+  
+  // Handle Employee Directory app route
+  if (pathname === '/employees' || pathname.startsWith('/employees/')) {
+    // Serve the Vue app
+    serveFile(res, path.join(__dirname, 'public', 'vue_app', 'index.html'));
+    return;
+  }
+  
+  // Check if file exists in public directory
+  const filePath = path.join(__dirname, 'public', pathname);
+  fs.access(filePath, fs.constants.F_OK, (err) => {
+    if (err) {
+      // Check if file exists in vue_app directory
+      const vueFilePath = path.join(__dirname, 'public', 'vue_app', pathname);
+      fs.access(vueFilePath, fs.constants.F_OK, (vueErr) => {
+        if (vueErr) {
           res.writeHead(404);
           res.end('File not found');
+          return;
         }
+        serveFile(res, vueFilePath);
+      });
+      return;
+    }
+    
+    // If the path is a directory, reject it
+    fs.stat(filePath, (err, stats) => {
+      if (err) {
+        res.writeHead(500);
+        res.end('Error checking file');
         return;
       }
       
-      // Get file extension to determine content type
-      const extname = path.extname(filePath);
-      let contentType = 'text/html';
-      
-      // Set the correct content type based on file extension
-      switch (extname) {
-        case '.js':
-          contentType = 'text/javascript';
-          break;
-        case '.css':
-          contentType = 'text/css';
-          break;
-        case '.json':
-          contentType = 'application/json';
-          break;
-        case '.png':
-          contentType = 'image/png';
-          break;
-        case '.jpg':
-        case '.jpeg':
-          contentType = 'image/jpeg';
-          break;
-        case '.svg':
-          contentType = 'image/svg+xml';
-          break;
+      if (stats.isDirectory()) {
+        res.writeHead(404);
+        res.end('Not a file');
+        return;
       }
       
-      // Read and serve the file
-      fs.readFile(filePath, (err, content) => {
-        if (err) {
-          if (err.code === 'ENOENT') {
-            // File not found
-            res.writeHead(404);
-            res.end('File not found');
-          } else {
-            // Server error
-            res.writeHead(500);
-            res.end(`Server Error: ${err.code}`);
-          }
-          return;
-        }
-        
-        // Success - serve the file
-        res.writeHead(200, { 'Content-Type': contentType });
-        res.end(content);
-      });
+      serveFile(res, filePath);
     });
-  }
+  });
 });
 
 // Connect to MongoDB
