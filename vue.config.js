@@ -1,17 +1,15 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
+  publicPath: '/',
+  outputDir: 'dist',
+  productionSourceMap: false,
   devServer: {
-    port: 8080,
-    webSocketServer: false,
     proxy: {
       '/api': {
-        target: 'http://localhost:5202',
+        target: process.env.VUE_APP_API_URL || 'http://localhost:3000',
         changeOrigin: true
       }
     }
-  },
-  publicPath: process.env.NODE_ENV === 'production' ? '/employees/' : '/',
-  outputDir: '../joseph_node/public/employees',
-  assetsDir: 'static'
+  }
 }) 
