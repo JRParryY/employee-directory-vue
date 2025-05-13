@@ -1,98 +1,33 @@
-# Employee Directory Application
+# Employee Directory Frontend (Vue.js)
 
-A full-stack application built with Vue.js, Node.js, Express, and MongoDB.
+## Links
+- Backend Repository: https://github.com/JRParryY/SimpleEmployeeDirectory
+- Deployed Application: https://simple-employee-directory-8c9bb400b351.herokuapp.com/employees
+
+## Description
+Vue.js single-page application for managing employee directory data. This application provides an intuitive interface for viewing, searching, and managing employee records.
 
 ## Features
+- Display employee information in a responsive layout
+- Search functionality to filter employees by name
+- Add new employees via a form
+- Delete existing employees
+- Expandable employee details
+- Pagination for large datasets
 
-- Multi-page application with Vue Router:
-  - Home/Welcome page
-  - Employee Directory page
-  - About page
-- Responsive navigation with hamburger menu on mobile
-- Browse employees with pagination
-- Search employees by name
-- View detailed employee information
-- Add new employees
-- Delete employees
-- Responsive design for all screen sizes
-- Consistent footer with contact information
+## Technology Stack
+- Vue.js
+- CSS3 with responsive design
+- RESTful API integration
 
 ## Project Structure
+- `src/components/` - Vue components
+  - `EmployeeBox.vue` - Main component for displaying employee data
+  - `EmployeeForm.vue` - Form for adding new employees
+  - `MyHeader.vue` - Header component
+  - `Footer.vue` - Footer component
+  - `Navigation.vue` - Navigation component
 
-The project is organized into two main folders:
-
-- `jo_vue/` - Frontend Vue.js application
-- `jo_node/` - Backend Node.js/Express API
-
-## Quick Setup (No Configuration Needed)
-
-The application is pre-configured and ready to use without any additional setup! MongoDB connection is already set up.
-
-### Backend Setup (jo_node)
-
-1. Navigate to the backend directory:
-   ```
-   cd jo_node
-   ```
-
-2. Install dependencies:
-   ```
-   npm install
-   ```
-
-3. Start the development server:
-   ```
-   npm run dev
-   ```
-
-The backend will run on http://localhost:5202.
-
-### Frontend Setup (jo_vue)
-
-1. Navigate to the frontend directory:
-   ```
-   cd jo_vue
-   ```
-
-2. Install dependencies:
-   ```
-   npm install
-   ```
-
-3. Start the development server:
-   ```
-   npm run serve
-   ```
-
-The frontend will run on http://localhost:8080.
-
-## Seeding the Database
-
-To populate the database with sample employee data:
-
-```bash
-# In the jo_node directory
-node seed-data.js
-```
-
-## Technologies Used
-
-- **Frontend**: Vue.js, Vue Router, CSS3, HTML5
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB
-- **Tools**: npm, Nodemon
-
-## Deployed Application
-
-The application is deployed on Heroku at: https://simple-employee-directory-8c9bb400b351.herokuapp.com/
-
-## Misc
-
-The application has been designed to meet the following criteria:
-
-- Vue.js App Design: Clean and intuitive multi-page interface
-- Color Combination: Teal (#1cbcb8) and dark teal (#004e54) with very light green background
-- MongoDB Data Reflection: Complete employee records with additional fields
-- Mobile View: Responsive design with hamburger menu navigation
-- Desktop Layout: Clean and efficient use of space with optimized navigation
-- Proper spacing and layout across all device sizes 
+## API Integration
+This frontend application connects to the Node.js backend API at:
+`https://simple-employee-directory-8c9bb400b351.herokuapp.com/api/employees` 
