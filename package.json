@@ -1,0 +1,22 @@
+{
+  "name": "employee-directory-app",
+  "version": "1.0.0",
+  "main": "jo_node/server.js",
+  "scripts": {
+    "start": "node jo_node/server.js",
+    "dev": "nodemon jo_node/server.js"
+  },
+  "engines": {
+    "node": "20.x"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Employee Directory Application with Node.js and Vue.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "mongoose": "^8.14.1",
+    "nodemon": "^3.1.10"
+  }
+} 
