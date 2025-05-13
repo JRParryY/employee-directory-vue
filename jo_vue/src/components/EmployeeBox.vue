@@ -143,7 +143,7 @@ export default {
       
       try {
         // Using fetch API to make HTTP request
-        const response = await fetch('/api/employees');
+        const response = await fetch('https://simple-employee-directory-8c9bb400b351.herokuapp.com/api/employees');
         
         if (!response.ok) {
           throw new Error(`Server responded with ${response.status}`);
@@ -173,7 +173,7 @@ export default {
     // Add a new employee via API call
     async addEmployee(employee) {
       try {
-        const response = await fetch('/api/employees', {
+        const response = await fetch('https://simple-employee-directory-8c9bb400b351.herokuapp.com/api/employees', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -200,7 +200,7 @@ export default {
       }
       
       try {
-        const response = await fetch(`/api/employees/${id}`, {
+        const response = await fetch(`https://simple-employee-directory-8c9bb400b351.herokuapp.com/api/employees/${id}`, {
           method: 'DELETE'
         });
         
