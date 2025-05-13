@@ -143,7 +143,7 @@ export default {
       
       try {
         // Using fetch API to make HTTP request
-        const response = await fetch('https://simple-employee-directory-8c9bb400b351.herokuapp.com/api/employees');
+        const response = await fetch('http://localhost:5202/api/employees');
         
         if (!response.ok) {
           throw new Error(`Server responded with ${response.status}`);
@@ -154,6 +154,7 @@ export default {
       } catch (err) {
         // Simplified error handling
         this.error = 'Failed to load employees. Please try again later.';
+        console.error('Error:', err);
       } finally {
         this.loading = false;
       }
@@ -173,7 +174,7 @@ export default {
     // Add a new employee via API call
     async addEmployee(employee) {
       try {
-        const response = await fetch('https://simple-employee-directory-8c9bb400b351.herokuapp.com/api/employees', {
+        const response = await fetch('http://localhost:5202/api/employees', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -191,6 +192,7 @@ export default {
         this.showForm = false; // Hide form after successful submission
       } catch (err) {
         alert('Failed to add employee. Please try again.');
+        console.error('Error:', err);
       }
     },
     // Delete an employee via API call
@@ -200,7 +202,7 @@ export default {
       }
       
       try {
-        const response = await fetch(`https://simple-employee-directory-8c9bb400b351.herokuapp.com/api/employees/${id}`, {
+        const response = await fetch(`http://localhost:5202/api/employees/${id}`, {
           method: 'DELETE'
         });
         
@@ -212,6 +214,7 @@ export default {
         this.employees = this.employees.filter(emp => emp._id !== id);
       } catch (err) {
         alert('Failed to delete employee. Please try again.');
+        console.error('Error:', err);
       }
     },
     // Change current page for pagination

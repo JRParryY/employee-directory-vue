@@ -39,7 +39,6 @@
             <h3>Backend</h3>
             <ul>
               <li>Node.js</li>
-              <li>Express.js</li>
               <li>MongoDB Database</li>
             </ul>
           </div>
