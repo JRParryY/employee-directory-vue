@@ -44,4 +44,7 @@ jo_vue/.env.*.local
 # Node specific
 jo_node/.env
 jo_node/.env.local
-jo_node/.env.*.local 
+jo_node/.env.*.local
+
+# Ignore the reference code directory
+Node_JS_codes/ 

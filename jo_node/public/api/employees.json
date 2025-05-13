@@ -1,0 +1,108 @@
+{
+  "employees": [
+    {
+      "_id": "emp001",
+      "name": "John Doe",
+      "jobTitle": "Software Engineer",
+      "department": "Engineering",
+      "email": "john.doe@example.com",
+      "manager": "Jane Smith",
+      "team": "Backend Development",
+      "currentProject": "API Refactoring",
+      "yearsInCompany": 3,
+      "createdAt": "2023-01-15T08:30:00.000Z",
+      "updatedAt": "2023-06-20T10:15:00.000Z"
+    },
+    {
+      "_id": "emp002",
+      "name": "Jane Smith",
+      "jobTitle": "Engineering Manager",
+      "department": "Engineering",
+      "email": "jane.smith@example.com",
+      "manager": "Michael Johnson",
+      "team": "Product Engineering",
+      "currentProject": "System Architecture",
+      "yearsInCompany": 5,
+      "createdAt": "2022-03-10T09:45:00.000Z",
+      "updatedAt": "2023-05-05T11:20:00.000Z"
+    },
+    {
+      "_id": "emp003",
+      "name": "Michael Johnson",
+      "jobTitle": "CTO",
+      "department": "Executive",
+      "email": "michael.johnson@example.com",
+      "manager": "",
+      "team": "Leadership",
+      "currentProject": "Company Strategy",
+      "yearsInCompany": 7,
+      "createdAt": "2021-02-05T10:00:00.000Z",
+      "updatedAt": "2023-04-15T14:30:00.000Z"
+    },
+    {
+      "_id": "emp004",
+      "name": "Emily Davis",
+      "jobTitle": "UX Designer",
+      "department": "Design",
+      "email": "emily.davis@example.com",
+      "manager": "Jane Smith",
+      "team": "User Experience",
+      "currentProject": "Mobile App Redesign",
+      "yearsInCompany": 2,
+      "createdAt": "2023-05-12T11:15:00.000Z",
+      "updatedAt": "2023-06-25T09:40:00.000Z"
+    },
+    {
+      "_id": "emp005",
+      "name": "Robert Wilson",
+      "jobTitle": "Frontend Developer",
+      "department": "Engineering",
+      "email": "robert.wilson@example.com",
+      "manager": "Jane Smith",
+      "team": "Frontend Development",
+      "currentProject": "Dashboard UI",
+      "yearsInCompany": 1,
+      "createdAt": "2023-08-20T13:25:00.000Z",
+      "updatedAt": "2023-09-10T16:50:00.000Z"
+    },
+    {
+      "_id": "emp006",
+      "name": "Sarah Brown",
+      "jobTitle": "Product Manager",
+      "department": "Product",
+      "email": "sarah.brown@example.com",
+      "manager": "Michael Johnson",
+      "team": "Product Management",
+      "currentProject": "Q4 Roadmap",
+      "yearsInCompany": 4,
+      "createdAt": "2022-07-08T08:10:00.000Z",
+      "updatedAt": "2023-08-15T10:05:00.000Z"
+    },
+    {
+      "_id": "emp007",
+      "name": "David Miller",
+      "jobTitle": "DevOps Engineer",
+      "department": "Engineering",
+      "email": "david.miller@example.com",
+      "manager": "Jane Smith",
+      "team": "Infrastructure",
+      "currentProject": "CI/CD Pipeline",
+      "yearsInCompany": 2,
+      "createdAt": "2022-11-30T14:20:00.000Z",
+      "updatedAt": "2023-07-05T11:35:00.000Z"
+    },
+    {
+      "_id": "emp008",
+      "name": "Jennifer Taylor",
+      "jobTitle": "QA Engineer",
+      "department": "Engineering",
+      "email": "jennifer.taylor@example.com",
+      "manager": "Jane Smith",
+      "team": "Quality Assurance",
+      "currentProject": "Automated Testing",
+      "yearsInCompany": 3,
+      "createdAt": "2023-02-18T09:30:00.000Z",
+      "updatedAt": "2023-08-22T13:40:00.000Z"
+    }
+  ]
+} 
