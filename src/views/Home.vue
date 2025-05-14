@@ -1,5 +1,6 @@
 <template>
   <div class="home-container">
+    <!-- Updated home page without action buttons -->
     <div class="welcome-section">
       <img src="../assets/logo.png" alt="Employee Directory Logo" class="welcome-logo" />
       <h1>Welcome to Employee Directory</h1>
@@ -7,14 +8,6 @@
         Manage your workforce data with our comprehensive employee directory application.
         Easily view, add, and manage employee information in one central location.
       </p>
-      <div class="action-buttons">
-        <router-link to="/employees" class="btn primary-btn">
-          View Directory
-        </router-link>
-        <router-link to="/about" class="btn secondary-btn">
-          Learn More
-        </router-link>
-      </div>
     </div>
     
     <div class="features-section">
@@ -81,40 +74,6 @@ export default {
   color: #444;
 }
 
-.action-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.btn {
-  padding: 0.8rem 2rem;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.primary-btn {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-.primary-btn:hover {
-  background-color: #18a6a2;
-}
-
-.secondary-btn {
-  background-color: #f9f9f9;
-  color: var(--primary-dark);
-  border: 2px solid var(--primary-dark);
-}
-
-.secondary-btn:hover {
-  background-color: #e9f7f7;
-}
-
 .features-section {
   padding: 1rem;
 }
@@ -155,11 +114,6 @@ export default {
 
 /* Responsive styling */
 @media (max-width: 768px) {
-  .action-buttons {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
   .welcome-section {
     padding: 2rem 1rem;
   }
